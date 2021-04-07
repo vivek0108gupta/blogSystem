@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="fb:app_id" content="443929956819562" />
+  <title><%= article.title %></title>
+  <meta property="og:title" content="<%= article.title %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://www.example.com/" />
+  <meta property="og:image" content="https://image.shutterstock.com/shutterstock/photos/1924513550/display_1500/stock-vector-illustration-of-abstract-colorful-happy-holi-background-card-design-for-color-festival-of-india-1924513550.jpg" />
+  <meta property="og:description" content="<%= article.description %>" />
+
+
+
+
+</head>
+
+
+<body>
+  <div class="container">
+    <h1 class="mb-1"><%= article.title %></h1>
+    <div class="text-muted mb-2">
+      <%= article.createdAt.toLocaleDateString() %>
+    </div>
+    <a href="/" class="btn btn-secondary">All Articles</a>
+    <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+
+    <div>
+      <%- article.sanitizedHtml %>
+    </div>
+
+    <div class="fb-share-button" 
+    data-href="https://995263f9b8d8.ngrok.io/articles/<%=article.slug%>"
+    data-layout="button_count">
+</div>
+  </div>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
